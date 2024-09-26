@@ -150,7 +150,7 @@ const Login = () => {
       setError(newErrors);
     }
 
-    console.log(error)
+
 
   }
 

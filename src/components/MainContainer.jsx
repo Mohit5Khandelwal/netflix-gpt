@@ -21,7 +21,9 @@ const MainContainer = () => {
         return null;
     }
 
-    const mainMovie = movie?.results[1];
+  
+
+    const mainMovie = movie?.results[2];
     // extract details 
     const { original_title, overview, id } = mainMovie;
     

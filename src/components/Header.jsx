@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { LOGO_URL } from '../utils/constants';
+import { toggleIsGptClick } from '../utils/geminiSlice';
 
 const Header = () => {
 
@@ -13,10 +14,20 @@ const Header = () => {
   const user = useSelector( store => store.user );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
 
   const popUpDisplay = () => {
     setShow(!show);
+  }
+
+  // Handle change the state 
+  const handleGptChange = () => {
+
+    console.log('GPT clicked');
+
+    dispatch( toggleIsGptClick() );
+    
   }
 
   // Restricton logic 
@@ -56,11 +67,20 @@ const Header = () => {
       <img 
         className='w-44'
         src={`${LOGO_URL}`} />
-
-         { user && <div>
-          <img src='src\assets\Netflix Profile Icons.jpeg' onClick={popUpDisplay}  className='w-10 h-10 m-4 cursor-pointer' />
-          { show && <LogOutDisplay /> }
-        </div> }
+          <div className='flex p-2'>
+            {/* language choose options Get these values from constant   */}
+            <select>
+              <option value="en"> English </option>
+              <option value="hindi"> Hindi </option>
+            </select>
+            <button className='py-2 px-2 m-2 bg-purple-800 text-white rounded-lg hover:opacity-80' onClick={handleGptChange}>
+              Search GPT
+            </button>
+            { user && <div>
+              <img src='src\assets\Netflix Profile Icons.jpeg' onClick={popUpDisplay}  className='w-10 h-10 m-4 cursor-pointer' />
+              { show && <LogOutDisplay /> }
+            </div> }
+          </div>
 
 
 

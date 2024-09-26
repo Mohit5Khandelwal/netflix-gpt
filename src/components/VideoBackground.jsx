@@ -11,7 +11,7 @@ const VideoBackground = ({ id }) => {
     // Calling the Hook movie Trailer 
     useMovieTrailer(id);
     // Fetching the trailer_id from redux store 
-    const trailer_id = useSelector( (store) => store?.movies?.trailer?.key)
+    const trailer_id = useSelector( (store) => store?.movies?.trailer?.key);
 
     // useEffect(() => {
     //   iframe.webkitRequestFullscreen();
@@ -19,14 +19,15 @@ const VideoBackground = ({ id }) => {
     
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen">
     <iframe
       className="w-screen aspect-video"
-      src={`https://www.youtube.com/embed/${trailer_id}?autoplay=1&mute=1&loop=1&controls=0`}
+      src={`https://www.youtube.com/embed/${trailer_id}?autoplay=1&mute=1&loop=1`}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
       referrerPolicy="strict-origin-when-cross-origin"
     ></iframe>
+
 
 
     </div>
