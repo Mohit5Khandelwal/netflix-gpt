@@ -5,7 +5,7 @@ import { auth } from '../utils/firebase'
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { LOGO_URL } from '../utils/constants';
+import { LOGO_URL, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toggleIsGptClick } from '../utils/geminiSlice';
 
 const Header = () => {
@@ -69,9 +69,8 @@ const Header = () => {
         src={`${LOGO_URL}`} />
           <div className='flex p-2'>
             {/* language choose options Get these values from constant   */}
-            <select>
-              <option value="en"> English </option>
-              <option value="hindi"> Hindi </option>
+            <select className='w-30 h-10 px-4 py-2 m-4 rounded-lg bg-cyan-900 text-white'>
+              { SUPPORTED_LANGUAGES.map( (lang) => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option> )}
             </select>
             <button className='py-2 px-2 m-2 bg-purple-800 text-white rounded-lg hover:opacity-80' onClick={handleGptChange}>
               Search GPT
